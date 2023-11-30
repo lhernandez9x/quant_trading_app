@@ -1,12 +1,5 @@
 from django.db import models
-
-# Create your models here.
-
-class Symbol(models.Model):
-    ticker = models.CharField(max_length=200)
-
-    class Meta():
-        verbose_name_plural = 'symbol'
+from core_app.models import Symbol
 
 class Prices(models.Model):
     ticker = models.ForeignKey(Symbol, on_delete=models.CASCADE)
@@ -19,3 +12,13 @@ class Prices(models.Model):
 
     class Meta:
         verbose_name_plural = 'prices'
+
+class Company(models.Model):
+    ticker = models.ForeignKey(Symbol, on_delete=models.CASCADE)
+    company_name = models.CharField(max_length=200)
+    description = models.TextField()
+    cik = models.IntegerField()
+    sector = models.CharField(max_length=200)
+
+    class Meta:
+        verbose_name_plural = 'company'
