@@ -20,5 +20,7 @@ class Company(models.Model):
     cik = models.IntegerField()
     sector = models.CharField(max_length=200)
 
+    def __str__(self):
+        return self.company_name
     class Meta:
         verbose_name_plural = 'company'
